@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 8080;
 const cors = require("cors");
 
 quotes = [
@@ -21,9 +21,11 @@ quotes = [
   '"A learning curve is essential to growth." <br> –Tammy Bjelland'
 ];
 
-function getRandomQuote() {
-  index = Math.floor(Math.random() * quotes.length);
-  return quotes[4];
+
+// Modified so that random quote is returned. Refactored so that function is suitable for use on any array.
+function getRandomQuote(quoteArray) {
+  index = Math.floor(Math.random() * quoteArray.length);
+  return quoteArray[index];
 }
 
 app.use(cors());
@@ -33,11 +35,13 @@ app.get("/", (req, res) => res.send("index"));
 
 // write route to get all quotes below this line
 
-// (insert your code here)
+app.get("/quotes", (req, res) => res.send(quotes));  //Route to access all quotes.
 
 //---------------------------
 
 // write route to get a random quote below this line
+
+app.get("/random", (req, res) => res.send(getRandomQuote(quotes)));
 
 // (insert your code here)
 
@@ -45,7 +49,12 @@ app.get("/", (req, res) => res.send("index"));
 
 // make sure route can handle errors if index is out of range
 
-app.get("/quotes/:index", (req, res) => res.send(quotes[req.params.index]));
+
+//Error message requests a number between '0' and 15 rather than '1' to 15, or the first entry in the quote array will never be accessed.
+app.get("/quotes/:index", (req, res) => {
+  let index = req.params.index;
+  res.send(index < 0 || index >= quotes.length ? `Error: please choose a number between 0 and ${quotes.length - 1}.` : quotes[req.params.index])
+});
 
 //---------------------------
 
