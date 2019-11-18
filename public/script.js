@@ -4,17 +4,10 @@ $(document).ready(() => {
   let quoteRequested = document.querySelector("#quote-request-button");
   quoteRequested.addEventListener("click", event => {
     event.preventDefault();
-    console.log("click registered");
-    axios.post("").then(response => { //what's axios post for?
-      quote = response.data;
-      $("#text").css({
-        "text-align": "center",
-        "min-height": "150px",
-        display: "flex",
-        "justify-content": "center",
-        "align-items": "center"
-      });
-      $("#text").html(quote);
+    $("#quote-text").show();
+    //fetches a quote from the random path defined in app.js, and then injects it into the '#quote-text' section defined in index.html.
+    axios.get("/random").then(response => {
+      $("#quote-text").html(response.data);
     });
     });
   });

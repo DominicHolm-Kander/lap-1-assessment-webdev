@@ -21,8 +21,13 @@ section {
   font-family: "Quicksand", sans-serif;
 }
 
-/* Replaced display hidden with display none */
+/* Refactored to contain desired quote-text CSS so that script.js doesn't need to modify it directly other than toggling display. */
 #quote-text {
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: none;
 }
 
