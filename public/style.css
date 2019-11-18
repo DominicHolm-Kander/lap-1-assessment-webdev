@@ -21,8 +21,9 @@ section {
   font-family: "Quicksand", sans-serif;
 }
 
-h1 {
-  display: hidden;
+/* Replaced display hidden with display none */
+#quote-text {
+  display: none;
 }
 
 h2 {
@@ -36,13 +37,16 @@ footer {
   bottom: 0;
   font-size: 12px;
 }
-
-p {
+/* need to align this to the right! */
+#photo-credit {
   padding-right: 20px;
 }
 
-form > input {
+#quote-request-button {
   font-size: 18px;
   padding: 5px 20px;
   border: none;
+  color: white;
+  background-color: grey;
+  border-radius: 10px;
 }
