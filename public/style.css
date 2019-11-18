@@ -5,9 +5,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Quicksand", sans-serif;
 }
 
+/* Refactored section to only deal with layout - text styles are dealt with by ID for more specificity. */
 section {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 20px;
@@ -18,20 +18,19 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: "Quicksand", sans-serif;
 }
 
 /* Refactored to contain desired quote-text CSS so that script.js doesn't need to modify it directly other than toggling display. */
 #quote-text {
-  text-align: center;
   min-height: 150px;
+  margin-top: 50px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 24px;
   display: none;
 }
 
-h2 {
+#title-text {
   font-family: "Dancing Script", cursive;
   font-size: 36px;
 }
@@ -39,10 +38,11 @@ h2 {
 footer {
   display: block;
   position: fixed;
+  right: 10px;
   bottom: 0;
   font-size: 12px;
 }
-/* need to align this to the right! */
+
 #photo-credit {
   padding-right: 20px;
 }
@@ -54,4 +54,14 @@ footer {
   color: white;
   background-color: grey;
   border-radius: 10px;
+}
+
+/* Enlarges quote section and photo credit font size on small-screen devices. */
+@media screen and (max-width: 760px){
+  section {
+    width: 80%;
+  }
+  footer {
+    font-size: 20px;
+  }
 }
